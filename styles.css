@@ -19,5 +19,11 @@ button {
     border: none;
     cursor: pointer;
     width: 40%;
+    display: inline;
+    width: 15%;
+}
+
+a:visited {
+    color: white;
 }
 

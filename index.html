@@ -14,10 +14,11 @@
     <p id = "quote1"></p>
     <p id = "quote2" style = "font-size: 30px; color: #39FF14"></p>
     <p id = "quote3"></p>
-
-    <button id = "next" style = "position: absolute; top: 47%">Next Quotes!</button>
-    <p style = "position: absolute; top: 57%">Thanks for the great year!</p>
-    <a href = "https://github.com/25benjaminli/quotes" style = "position: absolute; top: 67%; color: white" target = "_blank">Take a look at this for some more info</a>
+    <button id = "next" style = "top: 30px; ">Next Quote</button>
+    <button id = "back">Go Back</button>
+    
+    <p>Thanks for the great year!</p>
+    <a href = "https://github.com/25benjaminli/quotes" target = "_blank">Take a look at this for some more info</a>
 
     <script>
         var quotes = processQuotes(readTextFile("quotes.txt"));
@@ -81,7 +82,17 @@
             document.getElementById("quote3").innerHTML = quotes[index + 2];
             // document.getElementById("quoteselection").innerHTML = `${quotes[index]}\n${quotes[index + 1]}\n${quotes[index + 2]}\n`;
             // console.log(typeof(readTextFile("quotes.txt")));
-        })
+        });
+        document.getElementById("back").addEventListener('click', () => {
+            if (index >= 3) { index--; }
+            else { index = 2; }
+
+            document.getElementById("quote1").innerHTML = quotes[index - 2];
+            document.getElementById("quote2").innerHTML = quotes[index - 1];
+            document.getElementById("quote3").innerHTML = quotes[index];
+            // document.getElementById("quoteselection").innerHTML = `${quotes[index]}\n${quotes[index + 1]}\n${quotes[index + 2]}\n`;
+            // console.log(typeof(readTextFile("quotes.txt")));
+        });
     </script>
 
 </body>
