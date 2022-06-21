@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href = "styles.css" rel = "stylesheet">
+    <title>Document</title>
+
+</head>
+<body>
+    <h1>The Insightful Musings of one Unforgettable and Amazing Geometry Teacher</h1>
+    <br>
+    <p id = "quote1"></p>
+    <p id = "quote2" style = "font-size: 30px; color: #39FF14"></p>
+    <p id = "quote3"></p>
+
+    <button id = "next" style = "position: absolute; top: 47%">Next Quotes!</button>
+    <p style = "position: absolute; top: 57%">Thanks for the great year!</p>
+    <script>
+        var quotes = processQuotes(readTextFile("quotes.txt"));
+
+        function readTextFile(file)
+        {
+            var rawFile = new XMLHttpRequest();
+            rawFile.open("GET", file, false);
+            var allText;
+            rawFile.onreadystatechange = function ()
+            {
+                if(rawFile.readyState === 4)
+                {
+                    if(rawFile.status === 200 || rawFile.status == 0)
+                    {
+                        allText = rawFile.responseText;
+                        // alert(allText);
+                        return allText;
+                    }
+                }
+            }
+            rawFile.send(null);
+            return allText;
+        }
+
+        function processQuotes(str) {
+            // return array of quotes
+            var x = []
+            var left = 0, right = 0;
+            var sawBefore = false;
+            for(var i = 0; i < str.length; i++) {
+                // beginning of quote
+                
+                if(str[i] == '"' && !sawBefore) {
+                    sawBefore = true;
+                    left = i;
+                }
+                else if(str[i] == '"' && sawBefore) {
+                    right = i + 2;
+                    x.push(str.substring(left, right));
+                    left = right;
+                    sawBefore = false
+                }
+                
+            }
+
+
+            return x;
+        }
+        var index = 0;
+        document.getElementById("quote1").innerHTML = quotes[index];
+        document.getElementById("quote2").innerHTML = quotes[index + 1];
+        document.getElementById("quote3").innerHTML = quotes[index + 2];
+
+        document.getElementById("next").addEventListener('click', () => {
+            if (index < quotes.length - 3) { index++; }
+            else { index = 0; }
+
+            document.getElementById("quote1").innerHTML = quotes[index];
+            document.getElementById("quote2").innerHTML = quotes[index + 1];
+            document.getElementById("quote3").innerHTML = quotes[index + 2];
+            // document.getElementById("quoteselection").innerHTML = `${quotes[index]}\n${quotes[index + 1]}\n${quotes[index + 2]}\n`;
+            // console.log(typeof(readTextFile("quotes.txt")));
+        })
+    </script>
+</body>
+
+
+</html>
