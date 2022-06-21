@@ -4,21 +4,31 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href = "styles.css" rel = "stylesheet">
+    <link href = "style.css" rel = "stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
     <title>IMUGT</title>
 
 </head>
 <body>
-    <h1>The Insightful Musings of one Unforgettable Geometry Teacher</h1>
-    <br>
-    <p id = "quote1"></p>
-    <p id = "quote2" style = "font-size: 30px; color: #39FF14"></p>
-    <p id = "quote3"></p>
-    <button id = "next" style = "top: 30px; ">Next Quote</button>
-    <button id = "back">Go Back</button>
+    <div id="container">
+        <h1>The Insightful Musings of one Unforgettable Geometry Teacher</h1>
+        <div id="quotesList">
+            <p id = "quote1"></p>
+            <p id = "quote2" ></p>
+            <p id = "quote3"></p>
+        </div>
+        <div id="transportControls">
+            <button id = "back" ><</button>
+            <button id = "next">></button>
+        </div>
+        <div id="extraInfo">
+            <p>Thanks for the great year!</p>
+            <a href = "https://github.com/25benjaminli/quotes" target = "_blank">Take a look at this for some more info</a>
+        </div>
+    </div>
     
-    <p>Thanks for the great year!</p>
-    <a href = "https://github.com/25benjaminli/quotes" target = "_blank">Take a look at this for some more info</a>
 
     <script>
         var quotes = processQuotes(readTextFile("quotes.txt"));
