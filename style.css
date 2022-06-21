@@ -75,3 +75,7 @@ button:hover {
 #extraInfo {
 
 }
+
+a:visited {
+    color: white;
+}
